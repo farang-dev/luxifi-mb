@@ -31,7 +31,7 @@ class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-    Booking.joins(item: :user).where(item: {user: current_user}).or(Booking.where(user: user))
+    Booking.joins(item: :user).where(item: {user: user}).or(Booking.where(user: user))
     end
   end
 end
